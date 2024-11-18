@@ -24,46 +24,120 @@ const handleChange = (e)=>{
    
 e.preventDefault()
 console.log(formdate);
+
+setFormadate('')
   }
   return (
     <>
-    <form onSubmit={infoform}>
-    
-    <div className="max-w-[720px] p-6 my-9 bg-slate-300  grid grid-cols-1 gap-2 items-center justify-center h-screen rounded-lg  ">
-    <h2 className="text-lg font-bold ">Contact US</h2>
-    <div className="flex space-x-4">
-    <label htmlFor="firstName">First Name <span>*</span></label>
-      <input type='text' id="name" name="name" value={formdate.name} onChange={handleChange}  className="border-4"/>
-    <label htmlFor="lastName" >Last Name <span>*</span></label>
-    
-      <input type="text" id="lastname" name="lastname" onChange={handleChange} value={formdate.lastname}/>
+  <div className="bg-customGreen flex items-center justify-center h-screen">
+  <form onSubmit={infoform}>
+    <div className="max-w-[720px] p-6 bg-white grid grid-cols-1 gap-4 items-center rounded-lg h-128">
+      <h2 className="text-lg font-bold">Contact US</h2>
+      
+      {/* Campos First Name y Last Name en paralelo */}
+      <div className="grid grid-cols-2 gap-4">
+        <div className="flex flex-col">
+          <label htmlFor="firstName">First Name <span className="text-botonColor">*</span></label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={formdate.name}
+            onChange={handleChange}
+            className="border-2 rounded p-2"
+          />
+        </div>
+        <div className="flex flex-col">
+          <label htmlFor="lastName">Last Name <span className="text-botonColor">*</span></label>
+          <input
+            type="text"
+            id="lastname"
+            name="lastname"
+            value={formdate.lastname}
+            onChange={handleChange}
+            className="border-2 rounded p-2"
+          />
+        </div>
       </div>
-      <label htmlFor="emailAdress">Email Adress <span>*</span></label>
-      <input type="email"id="mail" name="mail" onChange={handleChange}  value={formdate.mail}/>
-      <label htmlFor="queryType">Query Type <span>*</span></label>
+      
+      {/* Campo Email */}
+      <div className="flex flex-col">
+        <label htmlFor="emailAdress">Email Address <span className="text-botonColor">*</span></label>
+        <input 
+          type="email"
+          id="mail"
+          name="mail"
+          value={formdate.mail}
+          onChange={handleChange}
+          className="border-2 rounded p-2"
+        />
+      </div>
+      
+      {/* Campo Query Type */}
+      <label htmlFor="queryType">Query Type <span className="text-botonColor">*</span></label>
       <div className="flex space-x-4">
-      
-      
-      <input type="radio"  onChange={handleChange}  value="General Enquiry" name="option" id="option2"/>
-      <label htmlFor="generalEnquiry">General Enquiry</label>
-     
-      
-     
-      <input type="radio" onChange={handleChange} value="Support Requeest" name="option" id="option1" />
-      <label htmlFor="suportRequest">Suport Request</label>
-     
+        <div className="" >
+        <input
+          type="radio"
+          onChange={handleChange}
+          value="General Enquiry"
+          name="option"
+          id="option2"
+         className="border-custom"
+        />
+        </div>
+        <div>
+        <label htmlFor="generalEnquiry">General Enquiry</label>
+        
+        <input
+          type="radio"
+          onChange={handleChange}
+          value="Support Request"
+          name="option"
+          id="option1"
+        />
+        <label htmlFor="supportRequest">Support Request</label>
+        </div>
       </div>
-    
-      <label htmlFor="message">Message <span>*</span></label>
-      <textarea onChange={handleChange} id="message" value={formdate.message} name="message" rows='3' clols="10"></textarea>
-      <div  className="flex space-x-4" >
-      <input type="checkbox" id="checkbox"   onChange={handleChange} value='Checked' name="checkbox"/>
+      
+      {/* Campo Message */}
+      <div className="flex flex-col">
+        <label htmlFor="message">Message <span className="text-botonColor">*</span></label>
+        <textarea
+          id="message"
+          name="message"
+          rows="3"
+          cols="10"
+          value={formdate.message}
+          onChange={handleChange}
+          className="border-2 rounded p-2"
+        ></textarea>
+      </div>
+      
+      {/* Consent */}
+      <div className="flex space-x-4 items-center">
+        <input
+          type="checkbox"
+          id="checkbox"
+          name="checkbox"
+          value="Checked"
+          onChange={handleChange}
+        />
+        <label htmlFor="consent">I consent to being contacted by the team <span className="text-botonColor">*</span></label>
+      </div>
+      
+      {/* Submit Button */}
+      <button
+        type="submit"
+        className="bg-botonColor rounded-md p-2 w-full text-white"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+</div>
 
-      <label htmlFor="consent">I consent to being contacted by the team *</label>
-      </div>
-      <button type="submit">Submit</button>
-      </div>
-      </form>
+
     </>
   );
 }
